@@ -54,7 +54,9 @@ console.log(library.books[0].title);
 console.log(library.books[1].title);
 console.log(library.books[2].title);
 
-// Object.NestedObjects.forEach()
+// Object.Array.forEach()
+// forEach() takes a call back function as a parameter
+// forEach() method is specially designed for arrays
 library.books.forEach((book) => {
   console.log(book.title);
 });
