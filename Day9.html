@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        .container{
+            background-color: lightgoldenrodyellow;
+        }
+        #heading{
+            color: white;
+        }
+        .champ{
+            padding: 25px;
+            border: 3px solid blue;
+        }
+        
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="heading">Javascript DOM</h1>
+            <p id="paragraph"> Lorem ipsum dolor, sit amet consectetur
+                adipisicing elit.
+                Ducimus quibusdam delectus atque,
+                aliquid odio id. Quis facilis molestiae iste, praesentium arc
+                hitecto a magni veniam error!</p>
+
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Services</li>
+            </ul>
+
+            <div class="parent">
+                <div class="child">Huzaifa</div>
+                <div class="child">Abu</div>
+                <div class="child">Mooaz</div>
+            </div>
+
+            <img
+                src="https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg"
+                alt>
+
+            <h1 id="ch">champion my friend</h1>
+            <p id="paragraph-change">Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Consequatur
+                blanditiis est officiis porro non esse voluptatum laborum iste,
+                rerum labore, suscipit, commodi
+                quaerat quos! Similique nulla quam aspernatur fuga vel minus
+                eligendi vero delectus
+                animi eum illum, porro nihil a.
+            </p>
+            <button id="btn">change Paragraph</button>
+
+        </div>
+        <script>
+        console.log(document);
+
+        // getElementById returns a single element that matches the specified id, or null
+        const heading = document.getElementById("heading");
+        console.log(heading);
+        heading.onclick = function(){
+            heading.innerHTML="HTML dom Manipulation"
+        }
+
+        // getElementsByClassName returns a live HTMLCollection of elements that match the specified class name(s).
+        const container = document.getElementsByClassName("container");
+        container[0].style.backgroundColor = "green";
+        console.log(container);
+
+        const container2 = document.querySelector(".container");
+        container2.style.backgroundColor = "lightblue"
+
+
+        // 
+        const div= document.createElement("div");
+        const text = document.createTextNode("Hello I'm Huzaifa Jabbar doing Js Assignment");
+
+        div.appendChild(text);
+        document.body.appendChild(div);
+
+
+        //
+        const li = document.createElement("li");
+        const listText = document.createTextNode("Contact Us");
+
+        li.appendChild(listText);
+        document.querySelector("ul").appendChild(li);
+
+        //
+        document.querySelector("#paragraph").remove();
+
+        //
+        const parent = document.querySelector(".parent");
+        if(parent && parent.lastElementChild){
+            parent.removeChild(parent.lastElementChild);
+        }
+        
+
+        //
+        const image = document.getElementsByTagName("img");
+        console.log(image[0]);
+        image[0].setAttribute("src" , "https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp")
+
+        //
+        heading.removeAttribute("id");
+
+
+        //
+        const champ = document.getElementById("ch");
+        champ.setAttribute("class","champ");
+
+        //
+        const paragraph_change = document.getElementById("paragraph-change")
+        const btn = document.getElementById("btn");
+
+        btn.onclick = function(){
+            paragraph_change.innerHTML = "this is a new paragraph ";
+        }
+
+        champ.addEventListener("mouseover",function(){
+            champ.style.borderColor = "red";
+        });
+        champ.addEventListener("mouseout",function(){
+            champ.style.borderColor = "blue";
+        });
+
+        /*  
+document.addEventListener('DOMContentLoaded', function() {
+    var element = document.getElementById('myElement');
+
+    element.addEventListener('mouseover', function() {
+        element.style.borderColor = 'red';
+    });
+
+    element.addEventListener('mouseout', function() {
+        element.style.borderColor = 'black';
+    });
+});
+
+The DOMContentLoaded event is fired when the initial HTML document has been completely loaded and parsed,
+ without waiting for stylesheets, images, and subframes to finish loading. This means the browser has 
+ finished parsing the HTML and constructing the DOM (Document Object Model) tree.
+
+Using the DOMContentLoaded event is a good practice to ensure that your JavaScript code that 
+manipulates the DOM runs after the document is fully loaded and ready to be interacted with. This avoids errors that 
+occur if your script tries to access DOM elements that are not yet available.
+        */
+
+    </script>
+    </body>
+</html>
