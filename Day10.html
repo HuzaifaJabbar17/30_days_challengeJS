@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        #changebc {
+            background-color: lightblue;
+            padding: 15px;
+        }
+    </style>
+    <body>
+        <p class="paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing
+            elit. Vitae molestiae
+            repellat nesciunt veniam perspiciatis. Ipsa, corrupti ea soluta
+            animi doloribus odio recusandae et! Dignissimos, hic.</p>
+
+        <p class="paragraph">
+            this is a new Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Officia, officiis.
+        </p>
+        <p id="changebc">helo my friend olympic is going on in france</p>
+
+        <button id="btn">update paragraph</button>
+
+        <img id="image"
+            src="https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg"
+            alt width="350px" height="350px">
+
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name">
+        </div>
+
+        <p id="keyboard-event">Keyboard keyup event </p>
+        <div>
+            <label for="keyup-event">Paragraph</label>
+            <input type="text" name id="keyup-event">
+        </div>
+
+        <!-- /////////////// -->
+        <form action id="formdata">
+            <div>
+                <label for="firstName">firstName</label>
+                <input type="text" id="firstName" name="firstName">
+            </div>
+            <div>
+                <label for="lastName">lastName</label>
+                <input type="text" id="lastName" name="lastName">
+            </div>
+
+            <button type="submit">submit</button>
+        </form>
+
+        <div>
+            <label for="select"> Choose an option</label>
+            <select name id="select">
+                <option value="csk">CSK</option>
+                <option value="mi">MI</option>
+                <option value="kkr">KKR</option>
+                <option value="rcb">RCB</option>
+            </select>
+
+            <p id="select_p">Selected value : </p>
+        </div>
+
+        <ul id="list">
+            <li>Huzaifa</li>
+            <li>Ali</li>
+            <li>Champ</li>
+            <li>Kamp</li>
+            <li>Jango</li>
+        </ul>
+
+        <script>
+
+        //1.
+        document.addEventListener("DOMContentLoaded",function(){
+
+            const p = document.getElementsByClassName("paragraph");
+            const btn = document.getElementById("btn");
+
+            btn.addEventListener("click",function(){
+                p[0].innerHTML = "paragraph updated content changed"
+            })
+            
+        })           
+        document.addEventListener("DOMContentLoaded",function(){
+            const image = document.getElementById("image");
+
+            image.addEventListener("dblclick",function(){
+                image.style.visibility="hidden";
+            })
+        }) 
+
+        // 2.
+
+        document.addEventListener("DOMContentLoaded",function(){
+            const change_background_Color = document.getElementById("changebc");
+            change_background_Color.addEventListener("mouseover",function(){
+                change_background_Color.style.backgroundColor = "lightgreen"
+            })
+            change_background_Color.addEventListener("mouseout",function(){
+                change_background_Color.style.backgroundColor = "pink";
+                // change_background_Color.style.border = "1px solid black";
+            })
+        })
+
+        document.addEventListener("DOMContentLoaded",function(){
+            const name_input = document.getElementById("name");
+
+            name_input.addEventListener("keydown",function(e){
+                // console.log(e)
+                console.log(e.key);
+            })
+        });
+
+        document.addEventListener("DOMContentLoaded",function(){
+            const  p = document.getElementById("keyboard-event");
+            const input_p = document.getElementById("keyup-event")
+
+            input_p.addEventListener("keyup",function(e){
+                p.innerHTML = `Current value : ${input_p.value}`
+            })
+        })
+
+
+        document.addEventListener("DOMContentLoaded",function(){
+
+            const form = document.getElementById("formdata");
+
+            form.addEventListener("submit",function(e){
+                e.preventDefault();
+
+                const formData = new FormData(form);
+                console.log(formData);
+
+                formData.forEach((value,key)=>{
+                console.log(`${key} : ${value}`)
+                })
+
+            })
+        })
+
+        document.addEventListener("DOMContentLoaded",function(){
+
+            const select = document.getElementById("select");
+            const select_p = document.getElementById("select_p");
+
+            select.addEventListener("change",function(){
+                const selected_option = select.value;
+
+                select_p.innerHTML = `Selected value :  ${selected_option}`;
+            })
+        })
+
+        document.addEventListener("DOMContentLoaded",function(){
+            const list = document.getElementById("list");
+
+            list.addEventListener("click",function(e){
+                if(e.target.tagName === "LI"){
+                    console.log(`${e.target.textContent}`);
+                }
+
+            })
+        })
+
+
+        </script>
+    </body>
+</html>
