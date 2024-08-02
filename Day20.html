@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <form action id="formdata">
+            <div>
+                <label for="email">Enter your email</label>
+                <input type="text" name="email" id="email" autocomplete="off">
+            </div>
+            <div>
+                <label for="password">Enter your password</label>
+                <input type="password" name="password" id="password"
+                    autocomplete="off">
+            </div>
+            <button id="btn" type="submit">submit</button>
+        </form>
+        <h1 id="name"></h1>
+        <p id="p"></p>
+
+        <script>
+
+            document.addEventListener("DOMContentLoaded",function(){
+                const form = document.getElementById("formdata");
+
+                form.addEventListener("submit",function(e){
+                e.preventDefault();
+
+                const email = document.getElementById("email");
+                const password = document.getElementById("password");
+
+                // console.log(email.value,password.value);
+                console.log(typeof email.value)
+
+                localStorage.setItem("email",email.value);
+                localStorage.setItem("password",password.value);
+
+                alert("user data save in the local storage");
+                form.reset();
+                })
+            })
+
+            window.addEventListener("load",function(){
+                
+               const emailSaved =  localStorage.getItem("email");
+               const passwordSaved =  localStorage.getItem("password");
+
+               console.log(emailSaved);
+               console.log(passwordSaved);
+
+               if(emailSaved){
+                document.getElementById("name").innerHTML = emailSaved;
+               }
+               if(passwordSaved){
+                document.getElementById("p").innerHTML = passwordSaved;
+               }
+            })
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <script>
+        function storage(key,value) { 
+            if(typeof key ==="string" && typeof value ==="string"){
+            // console.log(typeof key,typeof value);
+            localStorage.setItem(key,value);
+            sessionStorage.setItem(key,value);
+              }
+            }
+        storage("actor","Salman Khan");
+        storage("footballer","Dybala");
+
+        const actor = localStorage.getItem("actor");
+        console.log(actor);
+        const footballer = localStorage.getItem("footballer");
+        console.log(footballer);
+
+        const actor_s = sessionStorage.getItem("actor");
+        console.log(actor_s);
+
+        const footballer_s = sessionStorage.getItem("footballer");
+        console.log(footballer_s);
+
+        function clearStorage (){
+            localStorage.clear();
+            sessionStorage.clear();
+        }
+        clearStorage();
+    </script>
+
+    </body>
+</html>
